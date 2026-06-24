@@ -24,3 +24,23 @@ SELECT Count(*) - Count(ID) AS ID_Nulls,
         Count(*) - Count(PAY_AMT5) AS PAY_AMT5_Nulls,
         Count(*) - Count(PAY_AMT6) AS PAY_AMT6_Nulls
 FROM schema.uci_credit_card;
+-- Check for duplicates
+Select ID, Count(*) AS DuplicateCount
+From schema.uci_credit_card
+Group BY ID
+Having Count(*) > 1;
+-- Checking Range of AGE LIMIT_BAL and BILL_AMT1
+Select MIN(AGE) AS MinAge,
+MAX(AGE) AS MaxAge,
+AVG(AGE) AS AvgAGE
+From schema.uci_credit_card;
+
+Select MIN(LIMIT_BAL) AS MinLimit,
+MAX(LIMIT_BAL) AS MaxLimit,
+AVG(LIMIT_BAL) AS AvgLimit
+From schema.uci_credit_card;
+
+Select MIN(BILL_AMT1) AS MinBill,
+MAX(BILL_AMT1) AS MaxBill,
+AVG(BILL_AMT1) AS AvgBill
+From schema.uci_credit_card;
