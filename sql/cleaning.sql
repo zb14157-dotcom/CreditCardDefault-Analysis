@@ -44,3 +44,8 @@ Select MIN(BILL_AMT1) AS MinBill,
 MAX(BILL_AMT1) AS MaxBill,
 AVG(BILL_AMT1) AS AvgBill
 From schema.uci_credit_card;
+-- Overall Default Rate
+Select Count(*) AS TotalCustomer,
+SUM(`default.payment.next.month`) AS TotalDefaults,
+ROUND(AVG(`default.payment.next.month`) * 100,2) AS DefaultRate
+FROM schema.uci_credit_card; 
